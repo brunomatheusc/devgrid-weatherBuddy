@@ -4,7 +4,7 @@ import { handleCache } from '../middleware/common';
 
 const routes = Router();
 
-routes.get('/weather', handleCache, WeatherController.getCachedCities);
+routes.get('/weather', WeatherController.getCachedCities);
 routes.get('/weather/:cityName', handleCache, WeatherController.getWeatherByCityName);
 
 export default routes;
