@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import WeatherController from '../controllers/WeatherController';
+import { handleCache } from '../middleware/common';
 
 const routes = Router();
 
-routes.use('/weather', WeatherController.getCachedCities);
-routes.use('/weather/:cityName', WeatherController.getWeatherByCityName);
+routes.get('/weather', handleCache, WeatherController.getCachedCities);
+routes.get('/weather/:cityName', handleCache, WeatherController.getWeatherByCityName);
 
 export default routes;

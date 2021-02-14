@@ -1,4 +1,5 @@
-import "reflect-metadata";
+import 'reflect-metadata';
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import routes from "./routes";
@@ -13,7 +14,6 @@ function bootstrap() {
 		.listen(port, () => {
 			console.log(`Server started at ${port}`)
 		});
-
 }
 
 bootstrap();
