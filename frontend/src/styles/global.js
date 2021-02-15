@@ -8,7 +8,7 @@ export default createGlobalStyle`
 	}
 
 	body {
-		background: #f1f3f6;
+		background: #fff;
 		font-family: 'Quicksand', sans-serif;
 	}
 

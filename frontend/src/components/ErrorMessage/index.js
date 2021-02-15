@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container } from './styles';
 
-const ErrorMessage: React.FC = () => {
+const ErrorMessage = () => {
   	return (
 		<Container>
 			<p>Sorry. We couldn't find the specified city.</p>

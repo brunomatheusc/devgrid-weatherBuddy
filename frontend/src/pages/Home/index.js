@@ -1,10 +1,10 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../../components/Input';
 import WeatherCard from '../../components/WeatherCard';
 
-import { Container, Header, InputWrapper, Wrapper } from './styles';
+import { Container, Header, InputWrapper, Wrapper, LastWeather } from './styles';
 
-const Home: FC = () => {
+const Home = () => {
 	const [cityName, setCityName] = useState('');
 
 	useEffect(() => {
@@ -31,6 +31,12 @@ const Home: FC = () => {
 				</InputWrapper>
 
 				<WeatherCard cityName="Curitiba" condition="Clouds" temperature={20} />
+
+				<LastWeather>
+					{ [0, 1, 2, 3, 4].map((weather, index) => {
+						return (<WeatherCard key={index} cityName="Curitiba" condition="Clouds" temperature={20} />);
+					})}							
+				</LastWeather>
 			</Wrapper>
         </Container>
     );

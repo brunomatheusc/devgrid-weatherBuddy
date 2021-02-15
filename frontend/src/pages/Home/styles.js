@@ -7,6 +7,8 @@ export const Container = styled.div`
 	padding: 20px 120px;
 
 	height: 100%;
+	width: 997px;
+	margin: 0 auto;
 `;
 
 export const Header = styled.div`
@@ -27,6 +29,10 @@ export const Wrapper = styled.div`
 	flex: 1;
     height: 100%;
 	width: 100%;
+`;
+
+export const InputWrapper = styled.div`
+	display: flex;
 
 	p {
 		font-size: 20px;
@@ -34,6 +40,13 @@ export const Wrapper = styled.div`
 	}
 `;
 
-export const InputWrapper = styled.div`
+export const LastWeather = styled.div`
 	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	width: 100%;
+
+	padding: 25px 15px;
+	background: #eff5fd;
 `;
