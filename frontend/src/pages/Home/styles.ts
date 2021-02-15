@@ -21,8 +21,9 @@ export const Header = styled.div`
 
 export const Wrapper = styled.div`
     display: flex;
+	flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 	flex: 1;
     height: 100%;
 	width: 100%;

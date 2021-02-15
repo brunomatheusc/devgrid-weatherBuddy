@@ -11,7 +11,9 @@ interface IProps {
 const WeatherCard: FC<IProps> = ({ cityName, temperature, condition, ...rest }) => {
   	return (
 		<Container>
-
+			<p>{ cityName }</p>
+			<h2>{ `${temperature}º C`}</h2>
+			<p>{ condition }</p>
 		</Container>
 	);
 }

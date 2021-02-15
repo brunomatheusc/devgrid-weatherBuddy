@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import Input from '../../components/Input';
+import WeatherCard from '../../components/WeatherCard';
 
 import { Container, Header, InputWrapper, Wrapper } from './styles';
 
@@ -28,6 +29,8 @@ const Home: FC = () => {
 					<Input value={cityName} onChange={(e) => setCityName(e.target.value)} />
 					<p>now?</p>				
 				</InputWrapper>
+
+				<WeatherCard cityName="Curitiba" condition="Clouds" temperature={20} />
 			</Wrapper>
         </Container>
     );
