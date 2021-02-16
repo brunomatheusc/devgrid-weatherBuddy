@@ -24,4 +24,8 @@ export const Container = styled.div`
 	h2 {
 		font-size: 30px;
 	}
+
+	& + & {
+		margin-left: 20px;
+	}
 `;

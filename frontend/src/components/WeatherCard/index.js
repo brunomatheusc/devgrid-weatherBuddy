@@ -1,15 +1,13 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import { Container } from './styles';
 
-const WeatherCard = ({ cityName, temperature, condition, ...rest }) => {
+export default function WeatherCard({ cityName, temperature, condition, ...rest }){
   	return (
-		<Container>
+		<Container { ...rest }>
 			<p>{ cityName }</p>
 			<h2>{ `${temperature}ºC`}</h2>
 			<p>{ condition }</p>
 		</Container>
 	);
 }
-
-export default WeatherCard;

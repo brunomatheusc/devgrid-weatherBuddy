@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import WeatherCard from '../../components/WeatherCard';
 
 export const Container = styled.div`
 	display: flex;
@@ -43,7 +44,7 @@ export const InputWrapper = styled.div`
 export const LastWeather = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
 
 	width: 100%;
 

@@ -4,9 +4,11 @@ import WeatherCard from '../../components/WeatherCard';
 
 import { Container, Header, InputWrapper, Wrapper, LastWeather } from './styles';
 import api from '../../services/api';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const Home = () => {
 	const [city, setCity] = useState(null);
+	const [error, setError] = useState(false);
 	const [isFirst, setIsFirst] = useState(true);
 	const [lastSearches, setLastSearches] = useState([]);
 	const [search, setSearch] = useState('');
@@ -14,7 +16,9 @@ const Home = () => {
 	useEffect(() => {
 		if (!isFirst) {
 			const timer = setTimeout(() => {
-				handleSearchCity();
+				if (search) {
+					handleSearchCity();
+				}
 			}, 1000);
 
 			return () => clearTimeout(timer);
@@ -32,17 +36,27 @@ const Home = () => {
 	}, [city])
 
 	async function handleSearchCity() {
+		setError(false);
+
 		try {
-			const response = await api.get(`/weather/${search}`);
-			setCity(response.data);
-			console.log(response.data);
+			const data = (await api.get(`/weather/${search}`)).data;
+			
+			if (data == null) {
+				setCity(null);			
+				setError(true);	
+				return;
+			}
+			
+			setCity(data);
 		} catch (error) {
 			console.log(error);			
+			setError(true);	
 		}
-		console.log("Handle search");
 	}
 
 	function handleKeyPress(e) {
+		setError(false);
+		
 		if (e.key == 'Enter') {
 			handleSearchCity();
 		}
@@ -59,11 +73,13 @@ const Home = () => {
 			<Wrapper>
 				<InputWrapper>
 					<p>How is the weather in</p>
-					<Input type="text" value={search} onChange={(e) => setSearch(e.target.value)} onKeyPress={handleKeyPress} />
+					<Input type="text" value={search} onChange={(e) => setSearch(e.target.value)} onKeyDown={handleKeyPress} />
 					<p>now?</p>				
 				</InputWrapper>
 
-				{ city && <WeatherCard cityName={ city.name } condition={ city.weather } temperature={parseInt(city.temperature)} />}
+				{ error && <ErrorMessage />}
+
+				{ city && city.name != undefined && <WeatherCard cityName={ city.name } condition={ city.weather } temperature={parseInt(city.temperature)} />}
 
 				{ (lastSearches.length > 0) && 
 				<LastWeather>
