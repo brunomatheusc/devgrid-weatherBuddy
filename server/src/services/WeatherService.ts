@@ -1,16 +1,21 @@
+import Weather from "../helpers/Weather";
 import { redisClient } from "../middleware/common";
+import { getRedisData } from "../utils";
 import api from "../utils/api";
 
 class WeatherService {
-	async getWeatherByCityName(cityName: string) {
+	async getWeatherByCityName(cityName: string): Promise<Weather | null> {
 		try {
-			const cityWeather = await api.get('/weather', { params: {
+			const cityWeather = (await api.get('/weather', { params: {
 				'APPID': process.env.appID,
 				'q': cityName,
 				'units': 'metric'
-			}});
+			}})).data;
 
-			return cityWeather.data;
+			const { name, weather, main: { temp } } = cityWeather;
+			const { main } = weather[0]; 
+
+			return { name, weather: main, temperature: temp };
 		} catch (error) {
 			console.log(error);			
 		}
@@ -28,19 +33,6 @@ class WeatherService {
 				}
 	
 				keys.map(key => {
-					redisClient.get(key, (err, data) => {
-						if (err) {
-							throw err;
-						}
-
-						if (data) {
-							console.log(JSON.parse(data).name);
-							cachedCities.push(JSON.parse(data).name);
-						}
-					});
-
-					console.log(key);
-
 					if (max == 0 || cachedCities.length < max) {
 						cachedCities.push(key);
 					}
@@ -51,8 +43,14 @@ class WeatherService {
 		});
 
 		await promise;
+
+		const cities: Weather[] = [];
+		for (const city of cachedCities) {
+			const data = await getRedisData(city);
+			cities.push(data);
+		};
 		
-		return cachedCities;
+		return cities;
 	}
 }
 
