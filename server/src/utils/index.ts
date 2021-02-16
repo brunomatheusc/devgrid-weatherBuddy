@@ -9,7 +9,6 @@ export function getRedisData(key: string): Promise<Weather> {
 			}
 
 			if (data) {
-				console.log(JSON.parse(data).name);
 				resolve(JSON.parse(data));
 			}
 		});

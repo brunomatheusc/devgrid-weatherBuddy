@@ -23,7 +23,7 @@ class WeatherService {
 		return null;
 	}
 
-	async getAllCachedKeys(max: number) {
+	async getAllCachedKeys(max = 5) {
 		const cachedCities: string[] = [];
 
 		let promise = new Promise(function(resolve, reject) {
