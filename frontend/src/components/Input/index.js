@@ -4,7 +4,7 @@ import { Container } from './styles';
 
 const Input = ({ children, ...rest }) => {
 	return (
-		<Container>
+		<Container {...rest}>
 			{children}
 		</Container>
 	);

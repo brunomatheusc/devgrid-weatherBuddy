@@ -14,6 +14,8 @@ export const Container = styled.div`
 	border: 1px solid #f1f1f1;
 	border-radius: 5px;
 
+	box-shadow: 3px 3px teal;
+	
 	p {
 		font-size: 12px;
 		font-weight: 600;
