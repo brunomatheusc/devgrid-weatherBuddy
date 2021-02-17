@@ -29,10 +29,12 @@ const Home = () => {
 	}, [search]);
 	
 	useEffect(() => {
-		(async () => {
-			const response = await api.get('/weather?max=5');
-			setLastSearches(response.data);
-		})();
+		if (!isFirst) {
+			(async () => {
+				const response = await api.get('/weather?max=5');
+				setLastSearches(response.data);
+			})();
+		}
 	}, [city])
 
 	async function handleSearchCity() {

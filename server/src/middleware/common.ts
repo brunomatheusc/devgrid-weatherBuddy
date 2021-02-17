@@ -2,7 +2,7 @@ import { NextFunction, Request, Response, Router } from 'express';
 import cors from 'cors';
 import redis from 'redis';
 
-export const redisClient = redis.createClient(Number(process.env.REDIS_API));
+export const redisClient = redis.createClient(Number(process.env.REDIS_PORT), process.env.REDIS_HOST || 'localhost');
 
 export function handleCors(router: Router) {
 	return router.use(cors());
