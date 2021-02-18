@@ -41,7 +41,6 @@ cd devgrid-weatherBuddy
 cd server
 yarn
 yarn dev
-backend exposed at localhost:3333
 ```
 
 #### Running Frontend
@@ -49,10 +48,11 @@ backend exposed at localhost:3333
 cd frontend
 yarn
 yarn start
-frontend exposed at localhost:3000
 ```
 
 #### Docker
 ```
 docker-compose up
 ```
+
+After you running the docker command, you can access project exposed at *localhost:3000*.
