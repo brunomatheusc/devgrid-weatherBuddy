@@ -41,6 +41,7 @@ cd devgrid-weatherBuddy
 cd server
 yarn
 yarn dev
+backend exposed at localhost:3333
 ```
 
 #### Running Frontend
@@ -48,6 +49,7 @@ yarn dev
 cd frontend
 yarn
 yarn start
+frontend exposed at localhost:3000
 ```
 
 #### Docker
