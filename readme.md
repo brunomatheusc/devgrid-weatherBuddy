@@ -31,28 +31,22 @@ I prefer create my own css if I have time for this.
 ## ▶️ How to execute
 
 #### Cloning the project
+Clone the project and then entered project folder:
 ```
 git clone https://github.com/brunomatheusc/devgrid-weatherBuddy
 cd devgrid-weatherBuddy
 ```
-
-#### Running Backend
-```
-cd server
-yarn
-yarn dev
-```
-
-#### Running Frontend
-```
-cd frontend
-yarn
-yarn start
-```
-
+After you entered the project folder, run the Docker command below:
 #### Docker
 ```
 docker-compose up
 ```
 
 After you running the docker command, you can access project exposed at *localhost:3000*.
+
+#### Home
+<img src="./home.png">
+#### Not found
+<img src="./not-found.png">
+#### City
+<img src="./city.png">
